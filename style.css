@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Container utama */
+.login-container {
+    display: flex;
+    width: 90%;
+    max-width: 1000px;
+    gap: 60px;
+    align-items: center;
+}
+
+/* Bagian atas putih */
+.top-white {
+    background: linear-gradient(to bottom, white 50%, #6a0dad 50%);
+    height: 100vh;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+/* Deskripsi di kiri */
+.left-description {
+    width: 30%;               /* rampingkan ke bawah dengan mengecilkan width */
+    color: rgb(255, 255, 255);
+    margin-top: 50px;
+    margin-left: 180px;
+    display: flex;
+    flex-direction: column;
+
+    /* jangan tampilkan scrollbar, biarkan konten mengalir ke bawah */
+    overflow: visible;
+    max-height: none;
+
+    /* paksa teks membungkus ke bawah, hindari pemunculan horizontal scrollbar */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+
+    line-height: 1.5;
+}
+
+.logo {
+    width: 210px;
+    margin-left: 210px;
+    margin-bottom: 40px;
+}
+
+/* Form login di kanan */
+.login-box {
+    position: fixed;
+    top: 50%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.login-box h2 {
+    margin-top: 0;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 12px;
+    background: #6a0dad;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.login-box button:hover {
+    opacity: 0.9;
+}
