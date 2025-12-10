@@ -26,33 +26,44 @@ body {
     left: 0;
     z-index: -1;
 }
+/* sesuaikan ukuran logo agar muat di header yang diangkat */
+.logo_login {
+    position: fixed; /* posisikan relatif ke viewport */
+    top: 9vh;        /* letakkan di area putih (atas) */
+    left: 14%;        /* jarak dari kiri */
+    width: auto;
+    max-width: 270px;                /* batasi lebar agar tidak melebar ke ungu */
+    max-height: calc(50vh - 32px);   /* jangan melebihi area putih (50vh) minus margin */
+    object-fit: contain;
+    border-radius: 8px;
+    background-color: transparent;
+    z-index: 50;                      /* di atas background */
+    margin-top: 0;
+    margin-right: 0;
+}
 
 /* Deskripsi di kiri */
-.left-description {
-    width: 30%;               /* rampingkan ke bawah dengan mengecilkan width */
-    color: rgb(255, 255, 255);
-    margin-top: 50px;
-    margin-left: 180px;
+.left-description-login {
+    position: fixed;
+    top: 50vh;               /* letakkan di area ungu (50vh ke bawah); sesuaikan jika perlu */
+    left: 10%;                /* jarak dari tepi kiri */
+    width: 30%;
+    max-width: 420px;
+    color: #ffffff;
     display: flex;
     flex-direction: column;
 
-    /* jangan tampilkan scrollbar, biarkan konten mengalir ke bawah */
+    /* pastikan teks membungkus ke bawah, tanpa scrollbar */
     overflow: visible;
-    max-height: none;
-
-    /* paksa teks membungkus ke bawah, hindari pemunculan horizontal scrollbar */
     overflow-wrap: break-word;
     word-wrap: break-word;
     word-break: break-word;
     white-space: normal;
 
     line-height: 1.5;
-}
-
-.logo {
-    width: 210px;
-    margin-left: 210px;
-    margin-bottom: 40px;
+    z-index: 2;              /* di atas background gradient */
+    margin-left: 0;
+    margin-top: 0;
 }
 
 /* Form login di kanan */
@@ -61,11 +72,12 @@ body {
     top: 50%;
     left: 70%;
     transform: translate(-50%, -50%);
-    width: 400px;
+    width: 500px;
     background: white;
-    padding: 40px;
+    padding: 50px;
     border-radius: 12px;
     color: black;
+    /* ensure positioned ancestor for absolute child */
     display: flex;
     flex-direction: column;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -73,28 +85,136 @@ body {
 }
 
 .login-box h2 {
-    margin-top: 0;
+    font-size: 28px;
+    margin: 20px 0;
+}
+
+.login-box label {
+    font-size: 16px;
+    margin-top: 15px;
+    display: block;
 }
 
 .login-box input {
     width: 100%;
-    padding: 12px;
-    margin: 10px 0;
+    padding: 15px;
+    margin: 10px 0 20px 0;
     border: 1px solid #ccc;
     border-radius: 8px;
     box-sizing: border-box;
+    font-size: 16px;
 }
 
 .login-box button {
     width: 100%;
-    padding: 12px;
+    padding: 15px;
     background: #6a0dad;
     color: white;
     border: none;
     border-radius: 8px;
     cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
 }
 
 .login-box button:hover {
     opacity: 0.9;
+}
+
+/* place "Daftar Disini" at the right edge inside the box */
+.register-link {
+    position: absolute;
+    top: 80px;
+    right: 60px;
+    font-size: 14px;
+    color: #8c10eb;
+    text-decoration: none;
+    z-index: 5;
+}
+
+.register-link:hover {
+    text-decoration: underline;
+}
+
+/* optional: keep header layout clean since link is absolute now */
+.login-header {
+    display: block;
+    padding-right: 0;
+    margin-bottom: 8px;
+}
+
+.bisindo-text {
+    color: #5a4d9e;
+}
+.ku-text {
+    color: #d7a43e;
+}
+
+.welcome {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    color: black;
+}
+
+.forgot-password {
+    text-align: right;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-right: 0;
+    color: #6a0dad;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Header untuk halaman aksesMateri */
+.page-wrapper-akses_materi {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20vh;            /* beri ruang untuk header fixed */
+}
+
+/* header di atas dan melebar ke tepi layar */
+.main-header-akses_materi {
+    position: fixed;              /* tetap di atas */
+    top: 0;
+    left: 0;
+    background-color: #6a0dad;
+    width: 100vw;
+    height: 12vh;
+    display: flex;
+    align-items: flex-start;      /* logo dan teks naik ke atas */
+    padding: 10px 50px;          /* padding atas dikurangi */
+    color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    margin-left: 0;               /* hapus offset sebelumnya */
+}
+
+.header-content-akses_materi {
+    display: flex;
+    align-items: flex-start;      /* logo di posisi atas */
+    gap: 20px;
+    overflow: visible; /* jangan potong logo */
+}
+.logo_materi_1 {
+    padding-top: 7px;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: transparent;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* pastikan konten utama menempati sisa tinggi layar */
+.main-content-akses_materi {
+    width: 100%;
+    height: calc(100vh - 20vh);
+    padding: 40px;
+    overflow-y: auto;
 }
