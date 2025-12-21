@@ -1,0 +1,208 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    #ffffff 0%,
+    #ffffff 40%,
+    #5f6caf 40%,
+    #5f6caf 100%
+  );
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  padding: 60px;
+}
+
+
+/* KIRI */
+.left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 60px;
+}
+
+.left-top {
+  height: 40vh;              /* SAMA DENGAN BG PUTIH */
+  display: flex;
+  align-items: center;       /* tengah vertikal */
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo h1 {
+  margin-top: 10px;
+  color: #333;
+}
+
+.logo-circle {
+  background: #f5c542;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+}
+
+.left-bottom {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+}
+
+.description {
+  color: #ffffff;
+  line-height: 1.6;
+  max-width: 400px;
+}
+
+/* KANAN */
+.right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.brand-text {
+  font-size: 26px;
+  font-weight: 700;
+  margin-top: 12px;
+}
+
+.brand-main {
+  color: #1e4fd8; /* biru senada background */
+}
+
+.brand-sub {
+  color: #f5c400; /* kuning yang cocok dengan biru */
+}
+
+
+.signup-area {
+  text-align: right;
+  font-size: 12px;
+}
+
+.no-account {
+  display: block;
+  color: #6b7280;
+}
+
+.signup-link {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
+}
+
+
+/* SOCIAL LOGIN */
+.social-login {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.google-btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: #e9eefc;
+  cursor: pointer;
+  font-size: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.google-icon {
+  width: 18px;
+  height: 18px;
+}
+
+
+.icon-btn {
+  width: 42px;
+  height: 42px;
+  border: none;
+  background: #e9eefc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.icon-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+.fb-btn img {
+  width: 18px;
+}
+
+.apple-btn img {
+  width: 20px;
+}
+
+.login-card {
+  background: white;
+  width: 380px;
+  padding: 30px;
+  border-radius: 18px; /* lebih lembut */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+.login-card h2 {
+  margin-bottom: 20px;
+}
+
+/* HEADER LOGIN */
+.login-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 10px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.message {
+  margin-top: 10px;
+  text-align: center;
+}
