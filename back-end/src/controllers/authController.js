@@ -1,28 +1,34 @@
-const db = require("../config/db");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-
-exports.login = async (req, res) => {
+exports.login = (req, res) => {
   const { username, password } = req.body;
 
-  const [rows] = await db.query(
-    "SELECT * FROM users WHERE username = ?",
-    [username]
-  );
+  const sql = "SELECT * FROM users WHERE username = ?";
+  db.query(sql, [username], (err, results) => {
+    // 1️⃣ Error database
+    if (err) {
+      return res.status(500).json({ message: "DB error" });
+    }
 
-  if (rows.length === 0)
-    return res.status(400).json({ msg: "User tidak ditemukan" });
+    // 2️⃣ User tidak ditemukan
+    if (results.length === 0) {
+      return res.status(401).json({ message: "User tidak ditemukan" });
+    }
 
-  const user = rows[0];
+    // 3️⃣ AMBIL DATA USER DARI DB
+    const user = results[0];
 
-  const match = await bcrypt.compare(password, user.password);
-  if (!match) return res.status(400).json({ msg: "Password salah" });
+    // 4️⃣ CEK PASSWORD
+    if (user.password !== password) {
+      return res.status(401).json({ message: "Password salah" });
+    }
 
-  const token = jwt.sign(
-    { id_user: user.id_user, role: user.role },
-    "secretkey",
-    { expiresIn: "1d" }
-  );
-
-  res.json({ token, role: user.role });
+    // 5️⃣ LOGIN BERHASIL → KIRIM ROLE
+    res.json({
+      message: "Login berhasil",
+      user: {
+      role: user.role,   // admin / student
+      id: user.id_user,
+      username: user.username
+      }
+    });
+  });
 };

@@ -79,21 +79,6 @@ body {
   align-items: center;
 }
 
-.brand-text {
-  font-size: 26px;
-  font-weight: 700;
-  margin-top: 12px;
-}
-
-.brand-main {
-  color: #1e4fd8; /* biru senada background */
-}
-
-.brand-sub {
-  color: #f5c400; /* kuning yang cocok dengan biru */
-}
-
-
 .signup-area {
   text-align: right;
   font-size: 12px;
@@ -205,4 +190,18 @@ body {
 .message {
   margin-top: 10px;
   text-align: center;
+}
+
+.brand-text {
+  font-size: 26px;
+  font-weight: 700;
+  margin-top: 12px;
+}
+
+.brand-main {
+  color: #1e4fd8; /* biru senada background */
+}
+
+.brand-sub {
+  color: #f5c400; /* kuning yang cocok dengan biru */
 }

@@ -1,0 +1,179 @@
+/* LAYOUT UTAMA */
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: relative; /* Penting sebagai acuan card */
+  font-family: 'Poppins', sans-serif;
+}
+
+/* SISI KIRI (BRAND) */
+.auth-left {
+  flex: 1; /* Dibagi 50% */
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  position: absolute;
+  top: 15%; /* Berjarak 20% di atas garis tengah biru */
+  left: 16%; /* Berjarak 20% dari layar kiri */
+  
+  width: 220px; /* Sesuaikan kembali ukurannya karena sekarang sudah termasuk teks */
+  height: auto;
+  z-index: 5;
+}
+
+/* SISI KANAN (FORM) */
+.auth-right {
+  flex: 1; /* Dibagi 50% */
+  background-color: #5f6fb2;
+}
+
+.auth-card {
+  position: absolute;
+  top: 50%;
+  right: 15%; /* Memberikan jarak 20% dari tepi kanan layar */
+  transform: translateY(-50%); /* Hanya menyeimbangkan posisi vertikal agar tetap di tengah */
+  
+  width: 90%;
+  max-width: 420px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 40px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+.auth-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.signup-link a {
+  color: #5f6fb2;
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+/* FORM ELEMENTS */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.auth-form div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.auth-form label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #555;
+}
+
+.auth-form input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  outline-color: #5f6fb2;
+}
+
+.forgot {
+  font-size: 12px;
+  color: #888;
+  cursor: pointer;
+  text-align: right;
+}
+
+.btn-primary {
+  margin-top: 10px;
+  padding: 14px;
+  background: #5f6fb2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.auth-description {
+  position: absolute;
+  bottom: 25%; /* Jarak 10% dari bawah layar agar aman di area biru */
+  left: 10%;   /* Jarak 10% dari layar kiri sesuai permintaan */
+  
+  /* Membatasi agar tidak menabrak card */
+  /* Card ada di kanan, maka kita beri margin kanan yang besar */
+  right: 55%;  /* Ini akan menghentikan teks sebelum mencapai posisi card */
+  
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 300;
+  text-align: left;
+  z-index: 5;
+}
+
+/* SOCIAL BUTTONS */
+.social-login {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;      /* Larang pindah baris */
+  align-items: center;
+  gap: 8px;               /* Jarak antar tombol */
+  width: 100%;
+  margin-bottom: 25px;
+  box-sizing: border-box;
+}
+
+.social-login button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: #f2f5ff;
+  border-radius: 8px;
+  cursor: pointer;
+  height: 45px;           /* Tinggi seragam untuk semua tombol */
+  padding: 0 10px;
+  overflow: hidden;       /* Potong jika ada yang keluar jalur */
+}
+
+.social-login .google {
+  flex: 3;                /* Beri porsi lebih besar (teks + logo) */
+  gap: 8px;
+  white-space: nowrap;    /* Teks dilarang turun ke bawah */
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.social-login .icon-btn {
+  flex: 1;                /* Porsi kecil saja untuk icon saja */
+  min-width: 45px;        /* Biar tetap kotak */
+}
+
+/* KUNCI UKURAN GAMBAR AGAR TIDAK MERUSAK LAYOUT */
+.social-login button img {
+  width: 20px !important;  /* Paksa kecil */
+  height: 20px !important;
+  object-fit: contain;
+  flex-shrink: 0;          /* Gambar dilarang mengkerut */
+}
+
+/* UTILS */
+.bisindo { color: #5f6fb2; }
+.ku { color: #f4c430; }
