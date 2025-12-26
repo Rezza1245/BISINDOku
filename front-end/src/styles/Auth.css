@@ -127,6 +127,12 @@
   text-align: left;
   z-index: 5;
 }
+.auth-message {
+  margin-top: 10px;
+  text-align: center;
+  color: green;
+}
+
 
 /* SOCIAL BUTTONS */
 .social-login {
