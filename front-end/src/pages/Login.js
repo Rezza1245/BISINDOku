@@ -67,6 +67,7 @@ export default function Login() {
                         {location.state.success}
                     </p>
                 )}
+                
                 {/* FORM */}
                 <form className="auth-form" onSubmit={handleLogin}>
                     <label>Enter your username or email address</label>
