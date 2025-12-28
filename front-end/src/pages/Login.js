@@ -48,7 +48,7 @@ export default function Login() {
 
                 <h1 className="auth-title">Sign in</h1>
 
-                {/* SOCIAL LOGIN */}
+                {/* SOCIAL LOGIN
                 <div className="social-login">
                     <button className="google">
                         <img src="/google.png" alt="google" />
@@ -60,7 +60,7 @@ export default function Login() {
                     <button className="icon-btn">
                         <img src="/apple.png" alt="apple" />
                     </button>
-                </div>
+                </div> */}
 
                 {location.state?.success && (
                     <p style={{ color: "green", marginBottom: "10px" }}>

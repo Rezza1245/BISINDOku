@@ -1,0 +1,98 @@
+.materi-container {
+  padding: 30px;
+}
+
+.materi-title {
+  margin-bottom: 20px;
+ text-align: center;
+  color: #5b2d8b;
+}
+
+.materi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.materi-card {
+  background: linear-gradient(135deg, #ffd84d, #ffb703);
+  border-radius: 12px;
+  padding: 20px;
+  cursor: pointer;
+  border-radius: 12px;
+  text-align: center;
+  transition: 0.25s ease;
+}
+
+.materi-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.materi-image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.materi-card h3 {
+  margin-bottom: 8px;
+  color: #5b2d00;
+}
+
+.materi-card p {
+  font-size: 14px;
+  color: #4a3b00;
+}
+
+.upload-btn {
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.upload-btn:hover {
+  background-color: #fb8c00;
+}
+
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+.upload-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+
+.upload-form input,
+.upload-form select,
+.upload-form textarea {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.upload-form button {
+  padding: 10px;
+  background-color: #ff9800;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.upload-form button:hover {
+  background-color: #fb8c00;
+}
