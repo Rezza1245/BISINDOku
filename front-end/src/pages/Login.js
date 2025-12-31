@@ -27,9 +27,12 @@ export default function Login() {
 
         if (data.message === "Login berhasil" && data.user) {
             localStorage.setItem("user", JSON.stringify(data.user));
+
+            // tambahan: simpan token agar ProtectedRoute bisa bekerja
+            if (data.token) localStorage.setItem("token", data.token);
             navigate("/dashboard");
+            }
         }
-    };
 
     return (
         <AuthLayout>
@@ -67,7 +70,7 @@ export default function Login() {
                         {location.state.success}
                     </p>
                 )}
-                
+
                 {/* FORM */}
                 <form className="auth-form" onSubmit={handleLogin}>
                     <label>Enter your username or email address</label>

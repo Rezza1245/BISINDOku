@@ -96,3 +96,22 @@
 .upload-form button:hover {
   background-color: #fb8c00;
 }
+
+
+.quiz-box {
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px dashed #4caf50;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.quiz-link {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 8px 16px;
+  background: #4caf50;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+}

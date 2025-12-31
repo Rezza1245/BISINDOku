@@ -1,0 +1,249 @@
+:root {
+  --primary-color: #4f46e5; /* Biru Keunguan */
+  --secondary-color: #facc15; /* Kuning Cerah */
+  --bg-color: #f8fafc;
+  --text-dark: #1e1b4b;
+  --card-bg: #ffffff;
+}
+
+.forum-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  min-height: 100vh;
+}
+
+.forum-container h2 {
+  color: var(--primary-color);
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  border-bottom: 4px solid var(--secondary-color);
+  display: inline-block;
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+/* Topic Card Style */
+.topic-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(79, 70, 229, 0.1);
+  border-left: 6px solid var(--primary-color);
+  transition: transform 0.2s;
+}
+
+.topic-card:hover {
+  transform: translateY(-5px);
+}
+
+.topic-card h3 {
+  color: var(--primary-color);
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+.topic-card p {
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.topic-card small {
+  background: #e0e7ff;
+  color: var(--primary-color);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+/* Comments Section */
+.comments-section {
+  background-color: #f1f5f9;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 15px 0;
+}
+
+.comments-section h4 {
+  margin-top: 0;
+  color: var(--text-dark);
+  font-size: 1rem;
+}
+
+.comment-item {
+  background: white;
+  padding: 10px 15px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  border-left: 3px solid var(--secondary-color);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.comment-item p {
+  margin: 0 !important;
+  font-size: 0.95rem !important;
+}
+
+.comment-item strong {
+  color: var(--primary-color);
+}
+
+/* Reply Section */
+.reply-section {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.reply-section input {
+  flex: 1;
+  padding: 12px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.reply-section input:focus {
+  border-color: var(--primary-color);
+}
+
+.reply-section button {
+  background-color: var(--secondary-color);
+  color: var(--text-dark);
+  border: none;
+  padding: 0 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.reply-section button:hover {
+  background-color: #eab308;
+  transform: scale(1.05);
+}
+
+/* Admin Form Button (jika ada di CreateTopik) */
+.create-topic-form button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+}
+
+/* Container Utama Komentar */
+.comments-section {
+  background-color: #f1f5f9; /* Abu-abu sangat muda agar mata rileks */
+  padding: 20px;
+  border-radius: 12px;
+  margin: 20px 0;
+  border: 1px solid #e2e8f0;
+}
+
+.comments-section h4 {
+  color: #4338ca; /* Indigo tua */
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.comments-section h4::before {
+  content: "💬"; /* Icon simpel */
+}
+
+/* Item Komentar Satuan */
+.comment-item {
+  background: #ffffff;
+  padding: 12px 18px;
+  border-radius: 0 15px 15px 15px; /* Bubble style */
+  margin-bottom: 12px;
+  border-left: 4px solid #facc15; /* Aksen Kuning di pinggir */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+/* Nama Pengirim */
+.comment-item strong {
+  color: #4f46e5; /* Biru Keunguan */
+  font-size: 0.95rem;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* Isi Teks Komentar */
+.comment-item p {
+  color: #334155 !important;
+  margin: 0 !important;
+  font-size: 1rem !important;
+  line-height: 1.5;
+}
+
+/* Tanggal Komentar */
+.comment-date {
+  display: block;
+  text-align: right;
+  color: #94a3b8;
+  font-size: 0.75rem;
+  margin-top: 5px;
+  font-style: italic;
+}
+
+/* Pesan Jika Belum Ada Komentar */
+.no-comment {
+  text-align: center;
+  color: #94a3b8;
+  font-style: italic;
+  font-size: 0.9rem;
+  padding: 10px;
+}
+
+/* Input Balasan yang Lebih Stand Out */
+.reply-section {
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 50px; /* Lonjong modern */
+  border: 2px solid #e0e7ff;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.reply-section:focus-within {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+}
+
+.reply-section input {
+  border: none !important;
+  padding: 10px 20px !important;
+  font-size: 0.95rem;
+  background: transparent;
+}
+
+.reply-section button {
+  background: #facc15 !important; /* Kuning */
+  color: #1e1b4b !important; /* Indigo Gelap */
+  border-radius: 25px !important;
+  padding: 10px 25px !important;
+  font-weight: 800 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 6px rgba(250, 204, 21, 0.2);
+}
+
+.reply-section button:hover {
+  background: #eab308 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(250, 204, 21, 0.3);
+}

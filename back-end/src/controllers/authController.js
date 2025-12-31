@@ -1,4 +1,5 @@
 const db = require("../config/db");
+const jwt = require("jsonwebtoken");
 
 exports.register = (req, res) => {
   const { username, password, adminCode } = req.body;
@@ -43,35 +44,23 @@ exports.register = (req, res) => {
 exports.login = (req, res) => {
   const { username, password } = req.body;
 
-  if (!username || !password) {
-    return res.json({ message: "Data tidak lengkap" });
-  }
-
-  const sql = "SELECT * FROM users WHERE username = ?";
-  db.query(sql, [username], (err, results) => {
-    if (err) {
-      console.error(err);
-      return res.json({ message: "Login error" });
-    }
-
-    if (results.length === 0) {
-      return res.json({ message: "User tidak ditemukan" });
-    }
+  const query = "SELECT * FROM users WHERE username = ?";
+  db.query(query, [username], (err, results) => {
+    if (err) return res.status(500).json({ message: "Server error" });
+    if (results.length === 0) return res.status(401).json({ message: "User tidak ditemukan" });
 
     const user = results[0];
+    // cek password
+    if (password !== user.password) return res.status(401).json({ message: "Password salah" });
 
-    if (user.password !== password) {
-      return res.json({ message: "Password salah" });
-    }
+    // buat token
+    const token = jwt.sign(
+      { id_user: user.id_user, role: user.role }, // DATA INI WAJIB ADA
+    process.env.JWT_SECRET,
+    { expiresIn: "1d" }
+    );
 
-    res.json({
-      message: "Login berhasil",
-      user: {
-        id_user: user.id_user,
-        username: user.username,
-        role: user.role
-      }
-    });
+    res.json({ message: "Login berhasil", user, token });
   });
 };
 

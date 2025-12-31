@@ -1,0 +1,53 @@
+.upload-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.upload-title {
+  text-align: center;
+  margin-bottom: 24px;
+  color: #5a189a;
+}
+
+.upload-form label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.upload-form input,
+.upload-form textarea,
+.upload-form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.upload-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.btn-primary {
+  background: #fbbf24; /* kuning ke orange */
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  background: #e5e7eb;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}

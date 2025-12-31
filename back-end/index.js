@@ -4,6 +4,7 @@ const authRoutes = require("./src/routes/authRoutes");
 const materiRoutes = require("./src/routes/materiRoutes");
 const babRoutes = require("./src/routes/babRoutes");
 const kontenRoutes = require("./src/routes/kontenRoutes");
+const forumRoutes = require("./src/routes/forumRoutes");
 const cors = require("cors");
 const app = express(); 
 
@@ -15,6 +16,7 @@ app.use("/api/materi", materiRoutes);
 app.use("/api/bab", babRoutes);
 app.use("/api/konten", kontenRoutes);
 app.use("/uploads", express.static("uploads"));
+app.use("/api/forum", forumRoutes);
 
 
 

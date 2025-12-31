@@ -1,65 +1,117 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../styles/Materi.css";
 
 export default function Konten() {
-  const { id_bab } = useParams();
-  const [kontenList, setKontenList] = useState([]);
+    const { id_bab } = useParams();
+    const navigate = useNavigate();
+    const user = JSON.parse(localStorage.getItem("user"));
 
-  useEffect(() => {
+    const [kontenList, setKontenList] = useState([]);
+
+    // fetch konten dari backend
     const fetchKonten = async () => {
-      try {
-        const res = await axios.get(
-          `http://localhost:5000/api/bab/${id_bab}/konten`
-        );
-        setKontenList(res.data);
-      } catch (err) {
-        console.error("Gagal fetch konten:", err);
-      }
+        try {
+            const token = localStorage.getItem("token");
+            const res = await axios.get(
+                `http://localhost:3000/api/bab/${id_bab}/konten`,
+                {
+                    headers: { Authorization: `Bearer ${token}` },
+                }
+            );
+            setKontenList(res.data);
+        } catch (err) {
+            console.error(err);
+        }
     };
-    fetchKonten();
-  }, [id_bab]);
+    useEffect(() => {
+        fetchKonten();
+    }, [id_bab]);
 
-  const renderKonten = (konten) => {
-    switch (konten.tipe) {
-      case "video":
-        return (
-          <video width="100%" controls>
-            <source src={`http://localhost:5000/${konten.file_path}`} type="video/mp4" />
-            Browsermu tidak mendukung video.
-          </video>
-        );
-      case "gambar":
-        return (
-          <img
-            src={`http://localhost:5000/${konten.file_path}`}
-            alt={konten.judul}
-            style={{ width: "100%", borderRadius: "8px" }}
-          />
-        );
-      case "teks":
-        return <p>{konten.content_text}</p>;
-      default:
-        return <p>Jenis konten tidak diketahui</p>;
-    }
-  };
+    return (
+        <div className="update-container">
+            <h2 className="materi-title">Daftar Konten</h2>
 
-  return (
-    <div className="materi-container">
-      <h2 className="materi-title">Konten Bab</h2>
-      <div className="materi-grid">
-        {kontenList.length > 0 ? (
-          kontenList.map((konten) => (
-            <div key={konten.id_konten} className="materi-card">
-              <h3>{konten.judul}</h3>
-              {renderKonten(konten)}
+            {user?.role === "admin" && (
+                <button
+                    className="upload-btn"
+                    onClick={() => navigate(`/upload-konten/${id_bab}`)}
+                >
+                    + Tambah Konten
+                </button>
+            )}
+
+            <div className="materi-grid">
+                {kontenList.length > 0 ? (
+                    kontenList.map((k) => (
+                        <div key={k.id_konten} className="materi-card">
+                            <h3>{k.judul}</h3>
+
+                            {/* TEKS */}
+                            {k.tipe === "teks" && (
+                                <p>{k.content_text}</p>
+                            )}
+
+                            {/* QUIS / LINK */}
+                            {k.tipe === "quis" && (
+                                <a
+                                    href={k.content_text}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="quiz-link"
+                                >
+                                    Kerjakan Kuis
+                                </a>
+                            )}
+
+                            {/* GAMBAR */}
+                            {k.tipe === "gambar" && (
+                                <img
+                                    src={`http://localhost:3000/${k.file_path}`}
+                                    alt={k.judul}
+                                    className="materi-image"
+                                />
+                            )}
+
+                            {/* VIDEO */}
+                            {k.tipe === "video" && (
+                                <video controls width="100%">
+                                    <source src={`http://localhost:3000/${k.file_path}`} />
+                                </video>
+                            )}
+                            {/* Tombol Update & Delete untuk admin */}
+                            {user?.role === "admin" && (
+                                <div className="materi-actions">
+                                    <button onClick={() => navigate(`/update-konten/${k.id_konten}`)}>
+                                        Update
+                                    </button>
+                                    <button
+                                        onClick={async () => {
+                                            if (!window.confirm("Yakin ingin hapus konten ini?")) return;
+                                            try {
+                                                const token = localStorage.getItem("token");
+                                                await axios.delete(`http://localhost:3000/api/konten/${k.id_konten}`, {
+                                                    headers: { Authorization: `Bearer ${token}` },
+                                                });
+                                                fetchKonten(); // refresh list setelah delete
+                                            } catch (err) {
+                                                console.error("Gagal hapus konten:", err);
+                                            }
+                                        }}
+                                    >
+                                        Delete
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    ))
+                ) : (
+                    <p>Belum ada konten</p>
+                )}
             </div>
-          ))
-        ) : (
-          <p>Belum ada konten tersedia</p>
-        )}
-      </div>
-    </div>
-  );
+
+
+        </div>
+    );
 }

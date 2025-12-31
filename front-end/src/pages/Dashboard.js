@@ -18,7 +18,7 @@ export default function Dashboard() {
   const user = JSON.parse(localStorage.getItem("user"));
 
   const handleLogout = () => {
-    localStorage.removeItem("user"); // hapus sesi
+    localStorage.removeItem("token"); // hapus sesi
     navigate("/login");               // kembali ke login
   };
 

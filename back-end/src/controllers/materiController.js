@@ -90,6 +90,47 @@ exports.createMateri = (req, res) => {
   });
 };
 
+exports.updateMateri = [
+  upload.single("file"), // jika ingin update file juga
+  (req, res) => {
+    const { id_materi } = req.params;
+    const { judul, deskripsi } = req.body;
+
+    if (!judul) return res.status(400).json({ message: "Judul wajib diisi" });
+
+    const file_path = req.file ? req.file.path : null;
+
+    let query = "UPDATE materi SET judul = ?, deskripsi = ?";
+    const params = [judul, deskripsi];
+
+    if (file_path) {
+      query += ", file_path = ?";
+      params.push(file_path);
+    }
+
+    query += " WHERE id_materi = ?";
+    params.push(id_materi);
+
+    db.query(query, params, (err, result) => {
+      if (err) return res.status(500).json({ message: "Gagal update materi" });
+      res.json({ message: "Materi berhasil diupdate" });
+    });
+  },
+];
+
+exports.deleteMateri = (req, res) => {
+  const { id_materi } = req.params;
+  const query = "DELETE FROM materi WHERE id_materi = ?";
+  db.query(query, [id_materi], (err, result) => {
+    if (err) return res.status(500).json({ message: "Gagal hapus materi" });
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: "Materi tidak ditemukan" });
+    }
+    res.json({ message: "Materi berhasil dihapus" });
+  });
+};
+
+
 exports.createBab = (req, res) => {
   const { id_materi } = req.params;
   const { judul_bab } = req.body;

@@ -1,0 +1,59 @@
+/* CreateTopik.css */
+
+.create-topic-form {
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.create-topic-form h3 {
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.create-topic-form input,
+.create-topic-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #111827;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.create-topic-form input:focus,
+.create-topic-form textarea:focus {
+  outline: none;
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.2);
+}
+
+.create-topic-form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.create-topic-form button {
+  background-color: #7c3aed;
+  color: #fff;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.create-topic-form button:hover {
+  background-color: #6b21a8;
+  transform: translateY(-1px);
+}

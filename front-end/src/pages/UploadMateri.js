@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../styles/Materi.css";
+import "../styles/Upload.css";
+import "../styles/UploadMateri.css";
 
 export default function UploadMateri() {
   const navigate = useNavigate();
@@ -24,10 +25,13 @@ export default function UploadMateri() {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:3000/api/materi", {
+        const token = localStorage.getItem("token");
+        await axios.post("http://localhost:3000/api/materi", {
         judul: form.judul,
         deskripsi: form.deskripsi,
         created_by: user.id_user,
+      }, {
+        headers: { Authorization: `Bearer ${token}` }
       });
       alert("Materi berhasil ditambahkan");
       navigate("/materi");
@@ -38,31 +42,33 @@ export default function UploadMateri() {
   };
 
   return (
-    <div className="materi-container">
-      <h2 className="materi-title">Upload Materi Baru</h2>
-      <form className="upload-form" onSubmit={handleSubmit}>
-        <label>
-          Judul Materi:
-          <input
-            type="text"
-            name="judul"
-            value={form.judul}
-            onChange={handleChange}
-            required
-          />
-        </label>
+  <div className="upload-container upload-materi">
+    <h2 className="upload-title">Upload Materi Baru</h2>
 
-        <label>
-          Deskripsi Materi:
-          <textarea
-            name="deskripsi"
-            value={form.deskripsi}
-            onChange={handleChange}
-          />
-        </label>
+    <form className="upload-form" onSubmit={handleSubmit}>
+      <label>Judul Materi</label>
+      <input
+        type="text"
+        name="judul"
+        value={form.judul}
+        onChange={handleChange}
+        required
+      />
 
-        <button type="submit">Tambah Materi</button>
-      </form>
-    </div>
-  );
+      <label>Deskripsi Materi</label>
+      <textarea
+        name="deskripsi"
+        value={form.deskripsi}
+        onChange={handleChange}
+      />
+
+      <div className="upload-actions">
+        <button type="submit" className="btn-primary">
+          Tambah Materi
+        </button>
+      </div>
+    </form>
+  </div>
+);
+
 }
